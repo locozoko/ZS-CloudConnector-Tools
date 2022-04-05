@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# You must run the command using: bash prep.sh otherwise it will fail
+# You must run the command using: bash prep_azurecloud.sh, otherwise it will fail
 set -e
 
 if [ "$1" ]
