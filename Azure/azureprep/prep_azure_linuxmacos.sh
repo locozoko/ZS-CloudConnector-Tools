@@ -1,12 +1,5 @@
 #!/bin/bash
-# Product: Zscaler Cloud Connector
-# Author: Zoltan Kovacs (zkovacs@zscaler.com)
-# Version: 1.1 (April 1, 2022)
-    # Changes
-        # 1.1 - Added logic to only create service principal if terraform is selected
-        # 1.1 - Moved the output from the end to in-line to log created objects in case script fails before finishing
-        # 1.1 - Added color to the output
-        # 1.1 - Changed passinput input field to be hidden
+# This script prepares the Azure account with all the required prerequisites for Cloud Connector
 
 set -e
 red=`tput setaf 1`
