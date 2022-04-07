@@ -1,3 +1,82 @@
+# Zscaler Cloud Connector Azure Prep and Deployment Script
+
+Deploy Zscaler Cloud Connectors and Prerequisites in Azure Cloud Shell with Terraform in just a few clicks!
+
+## Description
+
+This script takes the prerequisites prep script to the "next level" by also deploying Cloud Connector to Azure.
+Think of this as a CloudConnector-in-a-Box perfect for labs, testing, or even a POV.
+The underlying terraform template is the default one found in the Cloud Connector Admin Console.
+
+## Getting Started
+
+### Dependencies
+
+* This project only runs in the Azure Cloud Shell
+* You will be prompted to mount storage if using Azure Cloud Shell the first time (it's just a single click)
+* Installs unzip into the Azure Cloud Shell, as required by the ZSCC Terraform Template
+* Requires a valid Azure admin account to access Azure Cloud Shell
+* Requires a valid Cloud Connector admin account and API Key
+
+### Installing
+
+* Simply copy this repo to your macos device or into the Azure cloud shell:
+```
+git clone https://github.com/locozoko/cloudconnector-tools.git
+```
+* Navigate to the cloudconnector-tools/Azure/azureprep_and_deploy directory
+
+### Executing program
+
+Running this simple script will automatically create all the resources in Azure for prerequisites.
+It will then deploy the Cloud Connector of your choice (single or 2 with load balancer) into a NEW VNet.
+
+Optionally, uncomment and modify items 6-22 in the tarraform.tfvars file to customize the deployment.
+This allows you to change the Subnet CIDR or do things like deploy the resources into an existing VNet.
+DO NOT ALTER ITEMS 1-5 AS THIS SCRIPT WILL MODIFY THOSE BASED ON YOUR INPUT!
+ALSO, DO NOT DEPLOY INTO AN EXISTING SUBNET WITH EXISTING RESOURCES THAT REQUIRE INBOUND CONNECTIVITY
+AS A NAT GATEWAY AND ROUTE WILL BE ATTACHED TO THAT SUBNET.
+
+* Log into Azure Portal: https://portal.azure.com
+* Open the Cloud Shell (if opening for first time, Azure will prompt you to create a storage mount)
+* If you haven't done so already, clone this repo into the Azure cloud shell:
+```
+git clone https://github.com/locozoko/cloudconnector-tools.git
+cd cloudconnector-tools/Azure/azureprep_and_deploy
+```
+* Run this script with the 3 parameters to seelect deployment type, Azure Region, and a prefix for the resource that will be created:
+```
+bash prep_and_deploycc_azurecloudshell.sh
+```
+* Confirm the Azure tenant and subscription looks correct
+* Provide the desired Azure Region to create the resource in
+* Provide the Cloud Connector credentials and API Key
+* Provide the desired prefix to use for resource names (defaults to "zscalercc" if left empty)
+* Upon successfully creation of resources, the script will output the information to the screen and into a output.log file
+* You will then be prompted for the Cloud Connector deployment type: base | base_cc | base_cc_lb | cc_lb (see below for details)
+
+## Help & Authors
+
+Contributors names and contact info:
+
+Zoltan Kovacs (zkovacs@zscaler.com)
+Blanco Lam (blam@zscaler.com)
+
+## Version History
+
+* 0.2
+    * Adding ability to define input as parameters instead of just interactively
+* 0.1
+    * Initial Release
+
+## License
+
+This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+
+
+
+
+
 # Zscaler Cloud Connector Cluster Infrastructure Setup
 
 **Terraform configurations and modules for deploying Zscaler Cloud Connector Cluster in Azure.**

@@ -1,4 +1,4 @@
-# Azure Prerequisites Prep Scripts
+# Zscaler Cloud Connector Azure Prep Scripts
 
 Scripts that configure the Cloud Connector prerequisites for Azure deployment.
 
@@ -23,7 +23,7 @@ or it can generate all the required resources in your Azure account automaticall
 
 * Simply copy this repo to your macos device or into the Azure cloud shell:
 ```
-https://github.com/locozoko/cloudconnector-tools.git
+git clone https://github.com/locozoko/cloudconnector-tools.git
 ```
 * Navigate to the cloudconnector-tools/Azure/azureprep directory
 
@@ -36,7 +36,7 @@ This script was created to run from a macos or linux machine and will automatica
 ```
 az login
 ```
-* Run this script
+* Run this script:
 ```
 ./prep_azure_linuxmacos.sh
 ```
@@ -56,14 +56,12 @@ This file is not a script but information those who might not want to use a bash
 
 #### prep_azurecloudshell.sh
 This script was created to run from the Azure Cloud Shell and will automatically generate all the required prerequisite resources
+Please note that if you do not provide the parameters with the script, you will be prompted interactively to provide that information
 * Log into Azure Portal: https://portal.azure.com
 * Open the Cloud Shell (if opening for first time, Azure will prompt you to create a storage mount)
+* Run this script with the 3 parameters to seelect deployment type, Azure Region, and a prefix for the resource that will be created:
 ```
-az login
-```
-* Run this script
-```
-./prep_azure_linuxmacos.sh
+bash prep_azurecloudshell.sh <arm|terraform> <azure_region> <prefix>
 ```
 * Confirm the Azure tenant and subscription looks correct
 * Provide the desired Azure Region to create the resource in
@@ -83,8 +81,7 @@ Blanco Lam (blam@zscaler.com)
 ## Version History
 
 * 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
+    * Adding ability to define input as parameters instead of just interactively
 * 0.1
     * Initial Release
 

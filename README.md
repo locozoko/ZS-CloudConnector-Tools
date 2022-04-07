@@ -1,5 +1,3 @@
-# cloudconnector-tools
-
 # Zscaler Cloud Connector Tools
 
 The tools and scripts in this repository are designed for Zscaler lab testing and POVs to reduce the time to deploy Cloud Connectors.
